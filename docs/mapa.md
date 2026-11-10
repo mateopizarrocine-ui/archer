@@ -24,6 +24,14 @@
 - Ojo: agregar o editar un disparador desde la web de claude.ai puede borrar el horario (pasó el 10/11). Después de tocar disparadores en la web, verificar `cron_expression` con `RemoteTrigger get`.
 - La tarea vieja de Cowork `trig_011P71GnrgQUFeargBjxrStW` quedó **pausada** (respaldo). Nunca actualizarla por API (system prompt de Cowork de ~71k caracteres).
 
+## Integración Calendly → Tracker de Calls
+
+- Vive dentro de la landing **La Cáscara v3** (Lovable `e54d4a50-21ae-4506-a2c4-e01e9c5c99eb`, la.cascaraco.com, la de /booking): Calendly avisa a `/api/public/calendly` (firmado) y la landing crea o actualiza la fila en ☎️ Tracker de Calls (`tblwy6EkOWYgWWVxV`). Reemplazó a un Zap viejo.
+- Al cancelar: «👿 Call cancelada (por nosotros)» si canceló alguien del equipo (host), «😡 por ellos» si fue el lead; solo si la fila seguía en «🟢 Agendada» (no pisa lo que cargó el closer). Desde el 10/11/2026.
+- Config editable en `/admin` de la landing (calendarios, campos, estados, setters). Registro de cada aviso en `automation_logs` (Lovable Cloud de la landing; se lee con `query_database` de Lovable, no está en el Supabase de Teo).
+- Dueño: **Archer · Apps** (la revisa en cada pasada). Desk le pasa lo que dependa de esto con un mensaje raíz «🏹 Para Archer · Apps».
+- Riesgo: comparte proyecto con la landing de marketing. Si se rehace o reemplaza la landing, antes pasar la integración a un proyecto propio.
+
 ## IDs que usan los prompts
 
 | Qué | ID |

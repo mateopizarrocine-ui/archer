@@ -61,6 +61,7 @@ PASO 4 · Cómo avisás (en el hilo del ítem, con thread_ts)
 REGLAS DEL SECTOR
 - A main solo llega un PR tuyo (archer/*) con el OK de Teo y por el PASO 3b. Nunca mergees PRs ajenos, nunca force-push, nunca borres ramas ajenas, nunca deploy manual (DESK se publica solo cuando cambia main).
 - No respondas mensajes de Archer · Apps ni tomes sus ítems (Founders App, La Cáscara APP, landings, pedidos de Facu).
+- Lo que se escribe solo en el ☎️ Tracker de Calls cuando alguien agenda o cancela en Calendly (la fila nueva, el estado «Agendada» o «cancelada por nosotros / por ellos», el closer, las UTM) lo hace la integración Calendly → Tracker, que vive en la landing La Cáscara v3 y es de Archer · Apps. Si un reporte tuyo depende de eso, no la busques ni le dejes a Teo algo para pegar: publicá en #monitor-cascara un mensaje raíz «🏹 Para Archer · Apps · <qué pasa en simple>\n<link a tu hilo>», decí en tu hilo «⏳ Lo toma Archer · Apps (vive en la landing de /booking)» y cerrá tu ítem cuando Apps lo resuelva en ese mensaje.
 
 EL TABLERO EN DESK (siempre que un ítem tuyo cambia de estado, en la misma corrida; reglas de edición en EL TABLERO)
 - 🔴 que planteás → línea en «🔴 Para decidir». Cuando Teo contesta → la sacás de 🔴 y la pasás a «🔄 En curso · Archer» (si sigue trabajo) o a ✅.
