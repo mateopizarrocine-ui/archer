@@ -1,14 +1,13 @@
 #!/usr/bin/env node
-// Arma el prompt final de cada sector (núcleo + sector) y, para Desk, el cuerpo del
+// Arma el prompt final de cada sector (núcleo + sector) y el cuerpo del
 // `RemoteTrigger update` con el job_config COMPLETO (si se manda parcial, se pisa).
 //
 //   node scripts/build.mjs            → arma todo en dist/
 //   node scripts/build.mjs --check    → además valida (sin placeholders sueltos, largo razonable)
 //
 // Salidas:
-//   dist/apps.txt               texto para pegar a mano en la tarea de Cowork «Archer · Apps»
-//   dist/desk.txt               prompt final de «Archer · Desk»
-//   dist/desk.update.json       body para RemoteTrigger update (trig_014ScCRaRYmE9Ggm7Ct5GA7G)
+//   dist/<sector>.txt           prompt final de cada sector
+//   dist/<sector>.update.json   body para RemoteTrigger update (trigger_id en state/<sector>.config.json)
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -28,9 +27,9 @@ export function armar(nombre) {
   return texto.replaceAll("{{SECTOR}}", s.sector).replaceAll("{{FIRMA}}", s.firma);
 }
 
-export function cuerpoDesk(prompt) {
-  const c = JSON.parse(leer("state/desk.config.json"));
-  return {
+export function cuerpo(nombre, prompt) {
+  const c = JSON.parse(leer(`state/${nombre}.config.json`));
+  const body = {
     job_config: {
       ccr: {
         environment_id: c.environment_id,
@@ -47,6 +46,8 @@ export function cuerpoDesk(prompt) {
       },
     },
   };
+  if (c.mcp_connections) body.mcp_connections = c.mcp_connections;
+  return body;
 }
 
 function validar(nombre, texto) {
@@ -67,12 +68,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   for (const nombre of Object.keys(SECTORES)) {
     const texto = armar(nombre);
     writeFileSync(join(ROOT, `dist/${nombre}.txt`), texto);
-    if (nombre === "desk") writeFileSync(join(ROOT, "dist/desk.update.json"), JSON.stringify(cuerpoDesk(texto), null, 2) + "\n");
+    writeFileSync(join(ROOT, `dist/${nombre}.update.json`), JSON.stringify(cuerpo(nombre, texto), null, 2) + "\n");
     const errores = check ? validar(nombre, texto) : [];
     errores.forEach((e) => console.error(`✗ ${nombre}: ${e}`));
     mal += errores.length;
     console.log(`${errores.length ? "✗" : "✓"} ${nombre}: ${texto.length} caracteres → dist/${nombre}.txt`);
   }
-  console.log("✓ desk: body de RemoteTrigger update → dist/desk.update.json");
+  console.log("✓ bodies de RemoteTrigger update → dist/<sector>.update.json");
   process.exit(mal ? 1 : 0);
 }
