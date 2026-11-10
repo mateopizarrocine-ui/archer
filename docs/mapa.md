@@ -10,8 +10,9 @@
 - Disparadores:
   1. **Horario** (red de seguridad): `CRON_TZ=America/Argentina/Buenos_Aires 30 8-18/2 * * 1-5`.
   2. **API · en vivo**: `POST https://api.anthropic.com/v1/claude_code/routines/trig_014ScCRaRYmE9Ggm7Ct5GA7G/fire`, headers `Authorization: Bearer <token>`, `anthropic-version: 2023-06-01`, body `{"text": "reporte_nuevo · hq_feedback id <uuid> · tipo <tipo>"}`. Lo llama DESK desde `api/supabase.js` (`fbArcher`, después de publicar el reporte en Slack). Token en Vercel como `ARCHER_DESK_FIRE_TOKEN`. Límite: 30 disparos por hora por rutina (compartido con «Run now»), 100 por hora por cuenta. Cada disparo = una sesión nueva. Experimental.
-  3. **GitHub · PR mergeado**: `pull_request.closed`, filtro «Is merged = true» y «Head branch starts with archer/», repo cascara-hq. Requiere la app de Claude en GitHub instalada en el repo. (Se configura desde la web, ver `pasos-teo.md`.)
-- Modos del prompt: A en vivo (solo el ítem del payload), B PR cerrado (revisa merges y hace pasada), C pasada programada.
+  3. **Zapier · respuestas de Teo**: workflow «Archer · Desk en vivo (respuestas de Teo en #monitor-cascara)» (`01a1c586-5be0-7213-b033-2921078ddb2e`, privado, https://zapier.com/workflow/01a1c586-5be0-7213-b033-2921078ddb2e): cada respuesta de Teo dentro de un hilo de #monitor-cascara → `{"text": "respuesta_teo · canal C0C9ZSU166P · hilo <thread_ts> · ts <ts>"}` (modo D). Desk decide si el hilo es suyo; si es de Apps, termina sin escribir. El token vive en una conexión «API by Zapier» propia de Desk (alias `desk_api`), distinta de la de Apps.
+  4. **GitHub · PR mergeado**: `pull_request.closed`, filtro «Is merged = true» y «Head branch starts with archer/», repo cascara-hq. Requiere la app de Claude en GitHub instalada en el repo. (Se configura desde la web, ver `pasos-teo.md`.)
+- Modos del prompt: D respuesta de Teo en un hilo (actúa sobre esa decisión), A en vivo (solo el ítem del payload), B PR cerrado (revisa merges y hace pasada), C pasada programada.
 - No duplicar: cada corrida «toma» el reporte con un update atómico que escribe `contexto.archer_toma` (vale 45 min). Si otra corrida ya lo tomó, no lo toca.
 
 ### Archer · Apps (ex «Monitor Cáscara»)
