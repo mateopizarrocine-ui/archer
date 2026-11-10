@@ -1,0 +1,11 @@
+{
+  "_nota": "Parte fija del job_config de la rutina «Archer · Desk» (todo menos el texto del prompt). Si se cambia algo de la rutina desde claude.ai (repo, modelo, herramientas), actualizar acá antes de desplegar. Ver .claude/commands/desplegar.md.",
+  "trigger_id": "trig_014ScCRaRYmE9Ggm7Ct5GA7G",
+  "environment_id": "env_011jX1LSjZBh3oioAoL6Yiuc",
+  "event_uuid": "98077537-2bc0-49d4-a675-51730864bd5d",
+  "session_context": {
+    "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebFetch"],
+    "model": "claude-opus-5-5",
+    "sources": [{ "git_repository": { "url": "https://github.com/mateopizarrocine-ui/cascara-hq" } }]
+  }
+}
