@@ -15,10 +15,13 @@
 - No duplicar: cada corrida «toma» el reporte con un update atómico que escribe `contexto.archer_toma` (vale 45 min). Si otra corrida ya lo tomó, no lo toca.
 
 ### Archer · Apps (ex «Monitor Cáscara»)
-- ID: `trig_011P71GnrgQUFeargBjxrStW` · tarea de Cowork (proyecto `claude_proj_011CYoLjxNQuWHByUndJxXhj`).
-- Horario: `CRON_TZ=America/Argentina/Buenos_Aires 59 7-19/2 * * 1-5`, modo de permisos auto.
-- **Nunca se actualiza por API**: su config trae un system prompt de Cowork de ~71k caracteres. El texto se pega a mano desde `dist/apps.txt`.
-- Conectores que usa: Slack, Zapier, Supabase, Airtable, Lovable, Netlify, n8n.
+- ID: `trig_018kpSkXfV2Fv7hymCoLBznB` · https://claude.ai/code/routines/trig_018kpSkXfV2Fv7hymCoLBznB · rutina de Claude Code en la nube (desde el 10/11/2026), repo `archer` como carpeta de arranque, entorno `env_011jX1LSjZBh3oioAoL6Yiuc`.
+- Conectores: Slack, Zapier, Supabase, Airtable, Lovable, Netlify, n8n (lista fija en `state/apps.config.json`).
+- Disparadores:
+  1. **Horario**: `CRON_TZ=America/Argentina/Buenos_Aires 59 7-19/2 * * 1-5`. La pasada de las 19:59 publica el resumen diario.
+  2. **API · en vivo**: lo llama el workflow de Zapier «Archer · Apps en vivo (#operaciones-cáscara)» (`01a1c4a8-752b-7e6a-a2e9-0ce0c75aa5a5`, privado, https://zapier.com/workflow/01a1c4a8-752b-7e6a-a2e9-0ce0c75aa5a5): cada mensaje nuevo de Facu o Aye en #operaciones-cáscara (no respuestas en hilo, no bots) → `{"text": "pedido_nuevo · canal C0C4VG94HFH · ts <ts>"}`. El token NO está en el código: vive en la conexión de Zapier «API by Zapier» (`02d17ef4-d3f0-834e-bf94-5e85f5cafc18`, Static Headers `Authorization: Bearer …` + `anthropic-version: 2023-06-01`, dominio api.anthropic.com). Si se regenera el token, se actualiza ahí con «Replace credential».
+- Ojo: agregar o editar un disparador desde la web de claude.ai puede borrar el horario (pasó el 10/11). Después de tocar disparadores en la web, verificar `cron_expression` con `RemoteTrigger get`.
+- La tarea vieja de Cowork `trig_011P71GnrgQUFeargBjxrStW` quedó **pausada** (respaldo). Nunca actualizarla por API (system prompt de Cowork de ~71k caracteres).
 
 ## IDs que usan los prompts
 
