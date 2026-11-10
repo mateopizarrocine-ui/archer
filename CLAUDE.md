@@ -34,4 +34,4 @@ Teo (operaciones, no técnico en lo cotidiano) es el dueño. Escribile simple, e
 4. **Apps se despliega igual que Desk** (rutina en la nube). La tarea vieja de Cowork no se toca por API: tiene un system prompt de ~71k caracteres que se perdería.
 5. **Nada de secretos acá.** El token del disparo en vivo va directo de claude.ai a Vercel; no se pega en el chat ni en este repo.
 6. **Antes de desplegar, `node scripts/build.mjs --check` tiene que dar ✓.** Después de desplegar Desk, verificá con `RemoteTrigger get` que el prompt y los conectores quedaron.
-7. Lo que Archer no puede hacer (plata, borrar, esquema, permisos, merge/deploy de DESK) no se le habilita desde un prompt sin que Teo lo pida explícitamente.
+7. Lo que Archer no puede hacer (plata, borrar, esquema, permisos) no se le habilita desde un prompt sin que Teo lo pida explícitamente. Excepción pedida por Teo (10/11/2026): Archer · Desk publica en DESK sus propios PRs `archer/*` cuando Teo responde «dale» en el hilo de Slack; Teo no entra a GitHub.

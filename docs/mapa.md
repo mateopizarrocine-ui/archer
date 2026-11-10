@@ -44,4 +44,4 @@
 3. `fbArcher` dispara la rutina con el id (si hay token; 4 s de tope; nunca bloquea).
 4. Archer · Desk (modo A) lee el reporte por id, lo toma, lo resuelve o abre PR y contesta en el hilo como «Archer · Desk».
 5. Si el disparo falló, la pasada de cada 2 h lo encuentra igual.
-6. Cuando Teo mergea un PR `archer/*`, GitHub dispara la rutina (modo B), que verifica en producción y avisa.
+6. Teo aprueba el PR respondiendo «dale» en el hilo de Slack. En la corrida siguiente, Archer · Desk lo pone al día con main (resuelve conflictos), lo publica en main, verifica en producción y avisa. Si el PR se mergea por GitHub, el disparador de PR mergeado (modo B) hace la verificación.
