@@ -26,7 +26,7 @@
 |---|---|
 | Slack #monitor-cascara (privado) | `C0C9ZSU166P` |
 | Slack #operaciones-cáscara (privado) | `C0C4VG94HFH` |
-| Canvas «Decisiones para Teo» | `F0CB0F7EW9W` |
+| Canvas «Tablero de Archer» (ex «Decisiones para Teo») | `F0CB0F7EW9W` |
 | Teo / Facu / Aye (Slack) | `U09JX0ZS08N` / `U08QM60TVFC` / `U0C3L3ZTV38` |
 | Bot Archer (Slack) | `B0C5ESHP56Y` |
 | Zapier · conexión Slack del bot | `02be5195-97ba-8c1c-b4a4-cb64747819dc` (SlackCLIAPI, `private_channel_message`) |

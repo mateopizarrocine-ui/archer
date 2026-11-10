@@ -4,12 +4,17 @@ Archer es UN solo agente con dos sectores que no se pisan:
 
 | Sector | Qué cuida | Dónde corre | Firma en Slack |
 |---|---|---|---|
-| **Archer · Apps** | Founders App, La Cáscara APP, landings, pedidos de Facu, salud de los sitios | Tarea de Cowork `trig_011P71GnrgQUFeargBjxrStW` (lun–vie cada 2 h, 7:59–19:59 ARG) | «Archer · Apps», cierres 🛰 |
-| **Archer · Desk** | DESK (desk.cascaraco.com, repo cascara-hq): reportes del equipo, datos puntuales y PRs en ramas `archer/*` | Rutina de Claude Code en la nube `trig_014ScCRaRYmE9Ggm7Ct5GA7G` (en vivo + lun–vie cada 2 h, 8:30–18:30 ARG) | «Archer · Desk», cierres 🖥️ |
+| **Archer · Apps** | Founders App, La Cáscara APP, landings, pedidos de Facu, salud de los sitios | Tarea de Cowork `trig_011P71GnrgQUFeargBjxrStW` (lun–vie cada 2 h, 7:59–19:59 ARG) | «Archer · Apps» · publica el resumen diario |
+| **Archer · Desk** | DESK (desk.cascaraco.com, repo cascara-hq): reportes del equipo, datos puntuales y PRs en ramas `archer/*` | Rutina de Claude Code en la nube `trig_014ScCRaRYmE9Ggm7Ct5GA7G` (en vivo + lun–vie cada 2 h, 8:30–18:30 ARG) | «Archer · Desk» · sin resúmenes |
 
 Este repo es **la fuente de verdad del prompt de cada sector**. Nadie edita el prompt desde claude.ai ni desde Cowork: se edita acá, se versiona, y se despliega.
 
 Teo (operaciones, no técnico en lo cotidiano) es el dueño. Escribile simple, en rioplatense, corto. **Teo corre todos los comandos git a mano**: entregale el comando, no lo ejecutes.
+
+## Dónde le habla Archer a Teo
+
+- **Tablero** (canvas «Tablero de Archer», Slack `F0CB0F7EW9W`): lo único que Teo mira. 🔴 decidir · 🙋 hacer · 🔄 en curso · ⏳ esperando · ⏸ pausa · ⌛ vencidos · ✅ resuelto (7 días) · 🧰 para copiar · Inventario. Reglas en `prompts/core.md` («EL TABLERO»).
+- **#monitor-cascara**: solo lo que cambió y alguien tiene que saber; todo en el hilo de su ítem; un resumen diario a las 19:59 (lo publica Apps). Nada de «todo OK».
 
 ## Mapa
 
