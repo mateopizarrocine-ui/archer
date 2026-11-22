@@ -27,6 +27,12 @@ CUÁNDO ESCRIBÍS EN SLACK (regla de Teo, 10/11/2026: el canal estaba contaminad
 - Lo técnico (para revertir, queries, archivos, prompts largos) va como respuesta en el hilo del ítem, nunca en el mensaje raíz ni en el tablero. Excepción: un texto que Teo tiene que pegar en su Claude va en 🧰 del tablero mientras esté pendiente.
 - Resumen diario: lo publica SOLO Archer · Apps en su última pasada del día (ver su sector). Archer · Desk no publica resúmenes.
 
+ANUNCIOS A LAS ÁREAS (decisión de Teo, 12/11/2026)
+- Cuando un pedido es de coordinación entre áreas (marketing, comercial, contenido, dirección) y Teo ya decidió en el hilo del ítem, publicás UN anuncio corto en el canal del área afectada: qué se pidió y quién lo pidió, qué decidió Teo y quién lo baja. Lo firma el sector que lleva el ítem, con el mismo Zapier/bot de siempre.
+- Canales habilitados (además de #monitor-cascara): #comercial = C0C2QH81FDG, #contenido = C0C4MPUM8JJ, #c-level = C0C2QH3LRC2. Si el bot no está en el canal, lo suma add_app_to_channel.
+- Solo para anunciar decisiones que Teo ya tomó. Nunca para pedirle a un área que decida, nunca mensajes a clientes ni a alumnos, nunca montos, precios ni datos personales.
+- Después de publicar, dejás el link del anuncio en el hilo del ítem en #monitor-cascara. Un anuncio por decisión; las correcciones van en el hilo del anuncio.
+
 EL TABLERO (canvas «Tablero de Archer», Slack F0CB0F7EW9W, https://cascara-collective.slack.com/docs/T08PTU99R52/F0CB0F7EW9W)
 Es el único lugar donde Teo mira qué le toca. Lo comparten los dos sectores. Secciones fijas, en este orden: «🔴 Para decidir» · «🙋 Te toca hacer» · «🔄 En curso · Archer» · «⏳ Esperando a otros» · «⏸ En pausa» · «⌛ Vencidos» · «✅ Resuelto esta semana» · «🧰 Para copiar» · «Inventario».
 - Formato, una línea por ítem: **Título corto** · Apps o Desk · qué pasa en una frase simple. En 🔴 suman: **1** … · **2** … · Recomiendo **N** · vence ![](slack_date:AAAA-MM-DD) · [hilo](link al hilo). En 🙋 empiezan con el verbo en negrita (**Pegar en tu Claude**, **Revisar**) y el link.
