@@ -62,3 +62,12 @@ así que NO se publicó. Para publicar: botón Publish en Lovable (o deploy_proj
 **Revertir:** restaurar en Lovable la versión anterior a esos dos commits.
 Ojo cosmético si se publica: `src/routes/admin.$alumnoId.tsx` muestra `{c.interes_1a1}/10`;
 con boolean se vería «interés 1a1: /10».
+
+## 22/11 · Teo eligió 1: publicar y anotar
+- Lovable: commit `804d32ea41ae625ee987200d88983712ca3c82f5` (admin muestra «sí/no» en interés 1a1) y publicado junto con `60856d55…` (deploy `533059cc-5e0a-4308-83c4-c70682210de1`).
+- Dato: `interes_1a1` pasó de null a true en 5 cierres que tenían «si» en las respuestas (Agustín Turcato 8, 10, 11; Thomas Iglesias 8, 10). El trigger creó o actualizó sus filas en `upsell`.
+**Revertir el dato:**
+```sql
+update cierre_fase set interes_1a1=null where id in ('e1227dc9-b073-4398-967c-57f3aa8ddefe','62906b8e-362b-42db-9021-594f8ec216b5','84c9eb70-6633-4e4d-947b-2f7771ae3798','537f480a-00c8-4f6a-8ad5-9781455b8353','51b0626d-4fcf-406e-be28-1a2c74be9ff9');
+```
+(las filas de upsell quedarían; borrarlas es decisión de Teo).
