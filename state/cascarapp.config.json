@@ -1,0 +1,15 @@
+{
+  "_nota": "Parte fija del job_config de la rutina en la nube «Archer · CascarApp» (todo menos el texto del prompt). La rutina todavía no existe: se crea cuando Teo arma el canal de Slack; ahí se completan trigger_id y event_uuid. A propósito NO lleva Supabase ni Airtable: este sector no toca datos.",
+  "trigger_id": "PENDIENTE",
+  "environment_id": "env_011jX1LSjZBh3oioAoL6Yiuc",
+  "event_uuid": "PENDIENTE",
+  "session_context": {
+    "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebFetch"],
+    "model": "claude-opus-5-5",
+    "sources": [{ "git_repository": { "url": "https://github.com/mateopizarrocine-ui/cascarapp" } }]
+  },
+  "mcp_connections": [
+    { "connector_uuid": "8549032a-b492-4f8b-9cf5-fa963b4532e6", "name": "Slack", "url": "https://mcp.slack.com/mcp" },
+    { "connector_uuid": "00c3c07a-c8d8-470d-9f2c-8b1c757f7548", "name": "Zapier", "url": "https://mcp.zapier.com/api/v1/connect" }
+  ]
+}

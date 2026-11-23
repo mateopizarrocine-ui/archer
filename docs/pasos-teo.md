@@ -55,3 +55,13 @@ Sin token, DESK sigue igual que hoy (el cambio no hace nada); la pasada de cada 
 ## 6 · Probar de punta a punta
 
 Cargá un reporte cualquiera desde DESK (botón de sugerencias/reportes, tipo «duda», ej. «Prueba en vivo: ¿cuántos closers hay cargados?»). En menos de un minuto tiene que aparecer en el hilo de #monitor-cascara una respuesta de «Archer · Desk».
+
+## Encender Archer · CascarApp (23/11/2026)
+
+Qué es: Aye le pide cambios de la app a Archer por Slack, ve una vista previa y los publica sola; lo de alto riesgo te espera a vos. Ya está armado; falta encenderlo. En orden:
+
+1. **Publicar el control en la app.** Revisá y mergeá https://github.com/mateopizarrocine-ui/cascarapp/pull/42 (no cambia nada de lo que ven los alumnos).
+2. **Crear el canal en Slack**, privado, por ejemplo `#cascarapp-cambios`, con Aye y vos adentro. Pasale el nombre a Claude.
+3. **Decirle a Claude «encendé Archer · CascarApp»** en el proyecto archer. Claude carga el id del canal, crea la rutina, arma el Zap y te avisa cuándo hace falta el paso 4.
+4. **Token del disparador** (igual que con Desk): en la rutina nueva → Editar → Disparadores → + → API → Generar token. Se ve una sola vez: pegalo directo en la conexión de Zapier que te indique Claude, nunca en el chat.
+5. **Prueba con Aye**: que pida un cambio de texto chico, mire la vista previa y conteste «publicar».

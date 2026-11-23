@@ -1,11 +1,12 @@
 # Archer · la casa del agente operativo de Cáscara Collective
 
-Archer es UN solo agente con dos sectores que no se pisan:
+Archer es UN solo agente con tres sectores que no se pisan:
 
 | Sector | Qué cuida | Dónde corre | Firma en Slack |
 |---|---|---|---|
 | **Archer · Apps** | Founders App, La Cáscara APP, landings, pedidos de Facu, salud de los sitios | Rutina de Claude Code en la nube `trig_018kpSkXfV2Fv7hymCoLBznB` (en vivo con pedidos de #operaciones-cáscara + lun–vie cada 2 h, 7:59–19:59 ARG). Reemplaza a la tarea de Cowork `trig_011P71GnrgQUFeargBjxrStW` | «Archer · Apps» · publica el resumen diario |
 | **Archer · Desk** | DESK (desk.cascaraco.com, repo cascara-hq): reportes del equipo, datos puntuales y PRs en ramas `archer/*` | Rutina de Claude Code en la nube `trig_014ScCRaRYmE9Ggm7Ct5GA7G` (en vivo + lun–vie cada 2 h, 8:30–18:30 ARG) | «Archer · Desk» · sin resúmenes |
+| **Archer · CascarApp** | CascarApp (newapp.cascaraco.com, repo cascarapp): los cambios que pide Servicio (Aye), con vista previa antes de publicar. Sin base de datos ni Airtable, a propósito | Rutina de Claude Code en la nube, **todavía sin crear** (falta el canal de Slack; ver `docs/mapa.md`) | «Archer · CascarApp» · sin resúmenes |
 
 Este repo es **la fuente de verdad del prompt de cada sector**. Nadie edita el prompt desde claude.ai ni desde Cowork: se edita acá, se versiona, y se despliega.
 
@@ -19,7 +20,7 @@ Teo (operaciones, no técnico en lo cotidiano) es el dueño. Escribile simple, e
 ## Mapa
 
 - `prompts/core.md` — núcleo común: identidad, voz, niveles 🟢🟡🔴⚪, cómo escribe en Slack, reglas no negociables. Placeholders `{{SECTOR}}` y `{{FIRMA}}`.
-- `prompts/apps.md`, `prompts/desk.md` — lo propio de cada sector.
+- `prompts/apps.md`, `prompts/desk.md`, `prompts/cascarapp.md` — lo propio de cada sector.
 - `scripts/build.mjs` — arma `dist/<sector>.txt` (núcleo + sector) y `dist/desk.update.json` (body completo para `RemoteTrigger update`). `--check` valida.
 - `state/<sector>.config.json` — la parte fija del job_config de cada rutina (trigger, entorno, repo, herramientas, modelo, conectores).
 - `docs/` — mapa de rutinas, IDs, conectores y disparadores (`docs/mapa.md`), pasos manuales para Teo (`docs/pasos-teo.md`).

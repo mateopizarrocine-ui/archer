@@ -18,13 +18,15 @@ const leer = (p) => readFileSync(join(ROOT, p), "utf8").trim();
 export const SECTORES = {
   apps: { sector: "APPS", firma: "Archer · Apps" },
   desk: { sector: "DESK", firma: "Archer · Desk" },
+  // canal: id del canal de Slack donde Servicio pide los cambios. Mientras diga PENDIENTE, el sector no se despliega.
+  cascarapp: { sector: "CASCARAPP", firma: "Archer · CascarApp", canal: "PENDIENTE" },
 };
 
 export function armar(nombre) {
   const s = SECTORES[nombre];
   if (!s) throw new Error("Sector desconocido: " + nombre);
   const texto = leer("prompts/core.md") + "\n\n" + leer(`prompts/${nombre}.md`) + "\n";
-  return texto.replaceAll("{{SECTOR}}", s.sector).replaceAll("{{FIRMA}}", s.firma);
+  return texto.replaceAll("{{SECTOR}}", s.sector).replaceAll("{{FIRMA}}", s.firma).replaceAll("{{CANAL}}", s.canal || "");
 }
 
 export function cuerpo(nombre, prompt) {
@@ -69,6 +71,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const texto = armar(nombre);
     writeFileSync(join(ROOT, `dist/${nombre}.txt`), texto);
     writeFileSync(join(ROOT, `dist/${nombre}.update.json`), JSON.stringify(cuerpo(nombre, texto), null, 2) + "\n");
+    // Sector que todavía no se encendió (falta el canal): se arma, pero no frena el chequeo de los demás ni se despliega.
+    if (SECTORES[nombre].canal === "PENDIENTE") { console.log(`⏳ ${nombre}: falta el id del canal de Slack (SECTORES.${nombre}.canal); no desplegar todavía`); continue; }
     const errores = check ? validar(nombre, texto) : [];
     errores.forEach((e) => console.error(`✗ ${nombre}: ${e}`));
     mal += errores.length;

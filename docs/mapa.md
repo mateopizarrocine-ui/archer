@@ -16,6 +16,12 @@
 - Modos del prompt: D respuesta de Teo en un hilo (actúa sobre esa decisión), A en vivo (solo el ítem del payload), B PR cerrado (revisa merges y hace pasada), C pasada programada.
 - No duplicar: cada corrida «toma» el reporte con un update atómico que escribe `contexto.archer_toma` (vale 45 min). Si otra corrida ya lo tomó, no lo toca.
 
+### Archer · CascarApp (armado el 23/11/2026, todavía sin encender)
+- Pedido de Teo: que Servicio (Aye) mejore CascarApp sin depender de él. Aye pide en un canal de Slack, Archer arma el cambio en una rama `servicio/*` del repo `mateopizarrocine-ui/cascarapp`, le pasa la vista previa (Netlify, en modo demo: no toca la base) y con su «publicar» sale.
+- Quién publica: la acción «Servicio · publicar cambios» de cascarapp (`.github/workflows/servicio-publicar.yml` + `.github/servicio/`). Publica solo lo que el control clasifica verde; lo rojo espera a Teo. Reglas y detalle: `docs/cambios-servicio.md` en cascarapp.
+- Rutina: sin crear. Config en `state/cascarapp.config.json` (mismo entorno, repo cascarapp, conectores SOLO Slack y Zapier: sin Supabase ni Airtable a propósito).
+- Falta para encender: (1) canal de Slack y su id en `SECTORES.cascarapp.canal` de `scripts/build.mjs`; (2) crear la rutina con `dist/cascarapp.update.json` y anotar `trigger_id` y `event_uuid`; (3) token del disparador API, directo a una conexión «API by Zapier» propia; (4) Zap: mensaje raíz de Aye o Teo en el canal → `{"text": "pedido_app · canal <id> · ts <ts>"}`; respuesta de Aye o Teo en un hilo → `{"text": "respuesta_app · canal <id> · hilo <thread_ts> · ts <ts>"}`; y si la respuesta es de Teo y empieza con «dale», «1», «sí» o «publicalo», antes publica el último PR del hilo con `github_teo` (solo PRs abiertos de ramas `servicio/*` contra main de cascarapp); (5) pasada programada de respaldo, 3 veces por día hábil.
+
 ### Archer · Apps (ex «Monitor Cáscara»)
 - ID: `trig_018kpSkXfV2Fv7hymCoLBznB` · https://claude.ai/code/routines/trig_018kpSkXfV2Fv7hymCoLBznB · rutina de Claude Code en la nube (desde el 10/11/2026), repo `archer` como carpeta de arranque, entorno `env_011jX1LSjZBh3oioAoL6Yiuc`.
 - Conectores: Slack, Zapier, Supabase, Airtable, Lovable, Netlify, n8n (lista fija en `state/apps.config.json`).
