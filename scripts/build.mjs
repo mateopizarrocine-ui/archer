@@ -19,7 +19,7 @@ export const SECTORES = {
   apps: { sector: "APPS", firma: "Archer · Apps" },
   desk: { sector: "DESK", firma: "Archer · Desk" },
   // canal: id del canal de Slack donde Servicio pide los cambios. Mientras diga PENDIENTE, el sector no se despliega.
-  cascarapp: { sector: "CASCARAPP", firma: "Archer · CascarApp", canal: "PENDIENTE" },
+  cascarapp: { sector: "CASCARAPP", firma: "Archer · CascarApp", canal: "#cascarapp-updates (C0CL3UWNT9B)" },
 };
 
 export function armar(nombre) {
