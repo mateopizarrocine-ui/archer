@@ -56,13 +56,6 @@ Sin token, DESK sigue igual que hoy (el cambio no hace nada); la pasada de cada 
 
 Cargá un reporte cualquiera desde DESK (botón de sugerencias/reportes, tipo «duda», ej. «Prueba en vivo: ¿cuántos closers hay cargados?»). En menos de un minuto tiene que aparecer en el hilo de #monitor-cascara una respuesta de «Archer · Desk».
 
-## Encender Archer · CascarApp (actualizado 24/11/2026)
+## Archer · CascarApp (encendido el 24/11/2026)
 
-Ya está hecho: el control publicado y probado en la app, el canal #cascarapp-updates, la rutina y el Zap (en borrador). Falta un solo paso tuyo, la llave:
-
-1. Abrí la rutina: https://claude.ai/code/routines/trig_01GpdK9oWtRv2j6QM2v4qKeE → **Editar** → fila **Disparadores** → **+** → **API** → **Generar token**. Se ve UNA sola vez: copialo.
-2. Abrí https://mcp.zapier.com/api/v1/connect-auth/App235435CLIAPI?accountId=25060309 y creá una conexión nueva de «API by Zapier» igual a la de Desk: tipo Static Headers, dominio `api.anthropic.com`, y dos encabezados: `Authorization` = `Bearer ` + el token, y `anthropic-version` = `2023-06-01`. Ponele de nombre «Archer CascarApp».
-3. Avisale a Claude «listo la llave». Claude conecta el Zap, lo enciende y lo verifica.
-4. **Prueba con Aye**: que pida un cambio de texto chico en #cascarapp-updates, mire la vista previa y conteste «publicar».
-
-El token no se pega en el chat ni en ningún archivo.
+Ya está todo encendido: control en la app, canal #cascarapp-updates, rutina, llave y Zap. Queda solo la **prueba con Aye**: que pida un cambio de texto chico en #cascarapp-updates, mire la vista previa y conteste «publicar». Si el token se regenera alguna vez, se reemplaza en la conexión de Zapier «Archer CascarApp» (nunca en el chat).
