@@ -1,15 +1,42 @@
 {
-  "_nota": "Parte fija del job_config de la rutina en la nube «Archer · CascarApp» (todo menos el texto del prompt). Rutina creada el 24/11/2026. Si se cambia algo desde claude.ai (repo, modelo, herramientas, conectores), actualizar acá antes de desplegar. A propósito NO lleva Supabase ni Airtable: este sector no toca datos.",
+  "_nota": "Parte fija del job_config de la rutina en la nube «Archer · CascarApp» (todo menos el texto del prompt). Rutina creada el 24/11/2026. Si se cambia algo desde claude.ai (repo, modelo, herramientas, conectores), actualizar acá antes de desplegar. Supabase para LEER cascara-v3-programa (la plataforma no respeta ?read_only=true en la URL: la conexión puede escribir y la solo-lectura la sostiene el prompt, igual que en Archer · Desk) (decisión de Teo 24/11/2026: leer datos de alumnos; los cambios de una persona se confirman en DESK). Sin Airtable.",
   "trigger_id": "trig_01GpdK9oWtRv2j6QM2v4qKeE",
   "environment_id": "env_011jX1LSjZBh3oioAoL6Yiuc",
   "event_uuid": "529a15d5-8345-4972-b14e-a80224f2b40c",
   "session_context": {
-    "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebFetch"],
+    "allowed_tools": [
+      "Bash",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebFetch"
+    ],
     "model": "claude-opus-5-5",
-    "sources": [{ "git_repository": { "url": "https://github.com/mateopizarrocine-ui/cascarapp" } }]
+    "sources": [
+      {
+        "git_repository": {
+          "url": "https://github.com/mateopizarrocine-ui/cascarapp"
+        }
+      }
+    ]
   },
   "mcp_connections": [
-    { "connector_uuid": "8549032a-b492-4f8b-9cf5-fa963b4532e6", "name": "Slack", "url": "https://mcp.slack.com/mcp" },
-    { "connector_uuid": "00c3c07a-c8d8-470d-9f2c-8b1c757f7548", "name": "Zapier", "url": "https://mcp.zapier.com/api/v1/connect" }
+    {
+      "connector_uuid": "8549032a-b492-4f8b-9cf5-fa963b4532e6",
+      "name": "Slack",
+      "url": "https://mcp.slack.com/mcp"
+    },
+    {
+      "connector_uuid": "00c3c07a-c8d8-470d-9f2c-8b1c757f7548",
+      "name": "Zapier",
+      "url": "https://mcp.zapier.com/api/v1/connect"
+    },
+    {
+      "connector_uuid": "01fb3ca7-03e5-4193-9159-de91fbd27fbd",
+      "name": "Supabase",
+      "url": "https://mcp.supabase.com/mcp"
+    }
   ]
 }
