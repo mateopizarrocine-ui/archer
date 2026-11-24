@@ -1,6 +1,6 @@
 ---
-description: Despliega el prompt de un sector de Archer (apps o desk) a su rutina en la nube
-argument-hint: desk | apps
+description: Despliega el prompt de un sector de Archer (apps, desk o cascarapp) a su rutina en la nube
+argument-hint: desk | apps | cascarapp
 ---
 
 Desplegá el sector `$ARGUMENTS` de Archer. Los dos sectores son rutinas de Claude Code en la nube y se despliegan igual.
@@ -9,6 +9,7 @@ Desplegá el sector `$ARGUMENTS` de Archer. Los dos sectores son rutinas de Clau
 2. Leé `state/$ARGUMENTS.config.json` (ahí está el `trigger_id`).
 3. `RemoteTrigger get` de ese trigger. Compará `job_config.ccr.environment_id`, `session_context`, el `uuid` del evento y los conectores (`mcp_connections`, si el config los lista) con el config. Si alguien cambió algo desde claude.ai (repo, modelo, herramientas, conectores), actualizá el config primero y volvé al paso 1.
 4. `RemoteTrigger update` con el contenido EXACTO de `dist/$ARGUMENTS.update.json` como body (job_config completo; si se manda parcial, se pisa).
+4b. Ojo (24/11/2026, pasó con cascarapp): si el body lleva `mcp_connections` además de `job_config`, el update puede dejar el horario vacío (`cron_expression: ""`). Si pasa, mandá un segundo update solo con `{"cron_expression": "<el que tenía>"}` y verificá `next_run_at`.
 5. Verificá con `RemoteTrigger get`: `derived_state.prompt` igual a `dist/$ARGUMENTS.txt` (salvo el salto de línea final), los conectores siguen, el cron y el token (`api_token_hint`) siguen.
 6. Pasale a Teo el comando git para versionar (no lo corras vos):
    `cd ~/Documents/Claude/archer && git add -A && git commit -m "<sector>: <qué cambió>" && git push`
